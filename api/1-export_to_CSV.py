@@ -2,8 +2,6 @@
 ''' 
    Script that use rest API to get information about employee
 '''
-
-
 import csv
 import requests
 import sys
@@ -38,4 +36,4 @@ if __name__ == "__main__":
 
     else:
         print(f"Failed to retrieve TODO list for employee {employee_id}.")
-   
+print(__import__("requests").__doc__)   
