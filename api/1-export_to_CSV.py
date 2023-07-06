@@ -3,8 +3,8 @@
    Script that use rest API to get information about employee
 '''
 import csv
+import json
 import requests
-import sys
 
 
 if __name__ == "__main__":
