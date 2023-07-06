@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 import requests
+"""
+Retrieves information about an employee's TODO list progress from the REST API.
+"""
 
 def get_employee_todo_progress(employee_id):
     # Make a GET request to the API endpoint
