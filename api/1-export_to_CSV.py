@@ -2,11 +2,9 @@
 """ Script that uses JSONPlaceholder API to get information about employee """
 import csv
 import json
-import sys
 import requests
+import sys
 
 
 if __name__ == "__main__":
-    url = 'https://jsonplaceholder.typicode.com/'
-
-    
+    url = 'https://jsonplaceholder.typicode.com/'    
