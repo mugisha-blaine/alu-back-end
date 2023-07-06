@@ -1,5 +1,9 @@
 #!/usr/bin/python3
+"""
+    python script that returns TODO list progress for a given employee ID
+"""
 import requests
+import json
 
 
 if __name__ == "__main__":
