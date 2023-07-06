@@ -4,24 +4,22 @@ import requests
 import sys
 
 
-response = requests.get(f'https://jsonplaceholder.typicode.com/users/{employee_id}/todos')
-
-    if response.status_code == 200:
-        todos = response.json()
-
-        completed_tasks = [todo for todo in todos if todo['completed']]
-
-        # Extract relevant information
-        employee_name = todos[0]['username']
-        number_of_done_tasks = len(completed_tasks)
-        total_number_of_tasks = len(todos)
-
-        
-        print(f"Employee {employee_name} is done with tasks ({number_of_done_tasks}/{total_number_of_tasks}):")
-
-        for task in completed_tasks:
-            print(f"\t{task['title']}")
-
-    else:
-        print(f"Failed to retrieve TODO list for employee {employee_id}.")
 if __name__ == "__main__":
+    url = 'https://jsonplaceholder.typicode.com/'
+
+    user = '{}users/{}'.format(url, sys.argv[1])
+    res = requests.get(user)
+    json_o = res.json()
+    print("Employee {} is done with tasks".format(json_o.get('name')), end="")
+
+    todos = '{}todos?userId={}'.format(url, sys.argv[1])
+    res = requests.get(todos)
+    tasks = res.json()
+    l_task = []
+    for task in tasks:
+        if task.get('completed') is True:
+            l_task.append(task)
+
+    print("({}/{}):".format(len(l_task), len(tasks)))
+    for task in l_task:
+        print("\t {}".format(task.get("title")))
