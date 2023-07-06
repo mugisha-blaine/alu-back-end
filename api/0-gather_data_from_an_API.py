@@ -1,8 +1,5 @@
 #!/usr/bin/python3
 import requests
-""" 
-Script that uses JSONPlaceholder API to get information about employee
-"""
 
 
 if __name__ == "__main__":
