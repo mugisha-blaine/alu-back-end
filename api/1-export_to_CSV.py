@@ -2,6 +2,8 @@
 ''' 
    Script that use rest API to get information about employee
 '''
+
+
 import csv
 import requests
 import sys
