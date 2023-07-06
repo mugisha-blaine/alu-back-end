@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-""" 
-   Script that uses JSONPlaceholder API to get information about employee
-"""
+''' 
+   Script that use rest API to get information about employee
+'''
 import csv
 import requests
 import sys
