@@ -1,5 +1,5 @@
 #!/usr/bin/python3i
-""" Script that uses API to get information about employee """
+"""Script that uses API to get information about employee"""
 import csv
 import requests
 import sys
