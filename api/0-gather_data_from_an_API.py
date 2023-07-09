@@ -1,32 +1,25 @@
 #!/usr/bin/python3
-"""script that returns to do list """
+""" Script that uses JSONPlaceholder API to get information about employee """
 import requests
-import json
+import sys
 
 
 if __name__ == "__main__":
-    def get_employee_todo_progress(employee_id):
-    
-        response = requests.get(f'https://jsonplaceholder.typicode.com')
+    url = 'https://jsonplaceholder.typicode.com/'
 
-        if response.status_code == 200:
-            todos = response.json()
+    employee = '{}users/{}'.format(url, sys.argv[1])
+    response = requests.get(employee)
+    nom = response.json()
+    print("Employee {} is done with tasks".format(nom.get('name')), end="")
 
-            completed_tasks = [todo for todo in todos if todo['completed']]
+    todos = '{}todos?userId={}'.format(url, sys.argv[1])
+    response = requests.get(todos)
+    tasks = response.json()
+    done = []
+    for task in tasks:
+        if task.get('completed') is True:
+            done.append(task)
 
-            employee_name = todos[0]['username']
-            number_of_done_tasks = len(completed_tasks)
-            total_number_of_tasks = len(todos)
-
-            print(f"Employee {employee_name} is done with tasks ({number_of_done_tasks}/{total_number_of_tasks}):")
-
-        
-            for task in completed_tasks:
-                print(f"\t{task['title']}")
-
-        else:
-            print(f"Failed to retrieve TODO list for employee {employee_id}.")
-
-# Provide the employee ID as a command-line argument
-employee_id = int(input("Enter the employee ID: "))
-get_employee_todo_progress(employee_id)
+    print("({}/{}):".format(len(done), len(tasks)))
+    for task in done:
+        print("\t {}".format(task.get("title")))i
