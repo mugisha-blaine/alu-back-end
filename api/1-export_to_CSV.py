@@ -1,5 +1,5 @@
-#!/usr/bin/python3
-""" Script that uses JSONPlaceholder API to get information about employee """
+#!/usr/bin/python3i
+""" Script that uses API to get information about employee """
 import csv
 import requests
 import sys
@@ -20,9 +20,9 @@ if __name__ == "__main__":
     done = []
     for task in tasks:
         done.append([userid,
-                       name,
-                       task.get('completed'),
-                       task.get('title')])
+                     name,
+                     task.get('completed'),
+                     task.get('title')])
 
     filename = '{}.csv'.format(userid)
     with open(filename, mode='w') as employee_file:
