@@ -17,10 +17,12 @@ if __name__ == "__main__":
     todos = '{}todos?userId={}'.format(url, userid)
     response = requests.get(todos)
     tasks = response.json()
-    done = []
+    d_task = []
     for task in tasks:
-        done.append([userid, name, task.get('completed'),
-                                   task.get('title')])
+        d_task.append([userid,
+                       name,
+                       task.get('completed'),
+                       task.get('title')])
 
     filename = '{}.csv'.format(userid)
     with open(filename, mode='w') as employee_file:
@@ -28,5 +30,5 @@ if __name__ == "__main__":
                                      delimiter=',',
                                      quotechar='"',
                                      quoting=csv.QUOTE_ALL)
-        for task in done:
+        for task in d_task:
             employee_writer.writerow(task)
