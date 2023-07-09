@@ -1,45 +1,34 @@
 #!/usr/bin/python3
-""" 
-Script that uses JSONPlaceholder API to get information about employee 
-"""
+""" Script that uses JSONPlaceholder API to get information about employee """
 import csv
-import json
 import requests
 import sys
 
 
 if __name__ == "__main__":
-    def export_employee_todo_csv(employee_id):
-    
-    response = requests.get(f'https://jsonplaceholder.typicode.com/users/{employee_id}/todos')
+    url = 'https://jsonplaceholder.typicode.com/'
 
-    if response.status_code == 200:
-        todos = response.json()
+    userid = sys.argv[1]
+    employee = '{}users/{}'.format(url, userid)
+    response = requests.get(employee)
+    nom = response.json()
+    name = nom.get('username')
 
- 
-        task_data = []
-        for task in todos:
-            task_data.append([
-                task['userId'],
-                task['username'],
-                str(task['completed']),
-                task['title']
-            ])
+    todos = '{}todos?userId={}'.format(url, userid)
+    response = requests.get(todos)
+    tasks = response.json()
+    done = []
+    for task in tasks:
+        done.append([userid,
+                       name,
+                       task.get('completed'),
+                       task.get('title')])
 
-        
-        file_name = f"{employee_id}.csv"
-
-       
-        with open(file_name, 'w', newline='') as file:
-            writer = csv.writer(file)
-            writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
-            writer.writerows(task_data)
-
-        print(f"TODO list exported to {file_name} successfully.")
-
-    else:
-        print(f"Failed to retrieve TODO list for employee {employee_id}.")
-
-
-employee_id = int(input("Enter the employee ID: "))
-export_employee_todo_csv(employee_id)
+    filename = '{}.csv'.format(userid)
+    with open(filename, mode='w') as employee_file:
+        employee_writer = csv.writer(employee_file,
+                                     delimiter=',',
+                                     quotechar='"',
+                                     quoting=csv.QUOTE_ALL)
+        for task in done:
+            employee_writer.writerow(task)
