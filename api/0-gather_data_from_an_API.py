@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Script that uses API to get information about employee """
-import requests
 import sys
+import requests
 
 
 if __name__ == "__main__":
@@ -22,4 +22,4 @@ if __name__ == "__main__":
 
     print("({}/{}):".format(len(done), len(tasks)))
     for task in done:
-        print("\t {}".format(task.get("title")))i
+        print("\t {}".format(task.get("title")))

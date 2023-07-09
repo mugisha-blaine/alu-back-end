@@ -19,10 +19,8 @@ if __name__ == "__main__":
     tasks = response.json()
     done = []
     for task in tasks:
-        done.append([userid,
-                     name,
-                     task.get('completed'),
-                     task.get('title')])
+        done.append([userid, name, task.get('completed'),
+                                   task.get('title')])
 
     filename = '{}.csv'.format(userid)
     with open(filename, mode='w') as employee_file:
