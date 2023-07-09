@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Script that uses API to get information about employee """
-import sys
 import requests
+import sys
 
 
 if __name__ == "__main__":

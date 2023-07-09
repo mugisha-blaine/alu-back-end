@@ -17,9 +17,9 @@ if __name__ == "__main__":
     todos = '{}todos?userId={}'.format(url, userid)
     response = requests.get(todos)
     tasks = response.json()
-    d_task = []
+    done = []
     for task in tasks:
-        d_task.append([userid,
+        done.append([userid,
                        name,
                        task.get('completed'),
                        task.get('title')])
