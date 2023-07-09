@@ -10,7 +10,7 @@ if __name__ == "__main__":
 
     userid = sys.argv[1]
     employee = '{}users/{}'.format(url, userid)
-    response = requests.get(user)
+    response = requests.get(employee)
     nom = response.json()
     name = nom.get('username')
 
