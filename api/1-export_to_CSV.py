@@ -20,9 +20,9 @@ if __name__ == "__main__":
     done = []
     for task in tasks:
         done.append([userid,
-                       name,
-                       task.get('completed'),
-                       task.get('title')])
+                     name,
+                     task.get('completed'),
+                     task.get('title')])
 
     filename = '{}.csv'.format(userid)
     with open(filename, mode='w') as employee_file:
