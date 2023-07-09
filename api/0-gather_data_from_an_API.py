@@ -1,9 +1,7 @@
 #!/usr/bin/python3
+"""script that returns to do list """
 import requests
 import json
-"""
-script that returns todo list progress for a given employee ID
-"""
 
 
 if __name__ == "__main__":
