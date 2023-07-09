@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+i#!/usr/bin/python3
 """
 python script that returns TODO list progress for a given employee ID
 """
@@ -7,7 +7,7 @@ import json
 
 
 if __name__ == "__main__":
-    response = requests.get(f'https://jsonplaceholder.typicode.com/users/{employee_id}/todos')
+    response = requests.get(f'https://jsonplaceholder.typicode.com')
 
     if response.status_code == 200:
         todos = response.json()
