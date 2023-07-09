@@ -10,7 +10,7 @@ if __name__ == "__main__":
 
     userid = sys.argv[1]
     employee = '{}users/{}'.format(url, userid)
-    response = requests.get(employee)
+    response = requests.get(user)
     nom = response.json()
     name = nom.get('username')
 
@@ -30,5 +30,5 @@ if __name__ == "__main__":
                                      delimiter=',',
                                      quotechar='"',
                                      quoting=csv.QUOTE_ALL)
-        for task in d_task:
+        for task in done:
             employee_writer.writerow(task)
