@@ -13,7 +13,6 @@ if __name__ == "__main__":
     response = requests.get(user)
     nom = response.json()
     name = nom.get('username')
-
     todos = '{}todos?userId={}'.format(url, userid)
     response = requests.get(todos)
     tasks = response.json()
