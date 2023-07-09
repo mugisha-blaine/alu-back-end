@@ -8,7 +8,7 @@ import sys
 if __name__ == "__main__":
     url = 'https://jsonplaceholder.typicode.com/'
     employee = '{}users'.format(url)
-    response = requests.get(user)
+    response = requests.get(employee)
     nom = response.json()
     todo_task = {}
     for user in nom:
